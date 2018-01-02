@@ -1,0 +1,12 @@
+{
+    "ID": "b1fb307e-3b97-4035-be9a-6ce87fc562d9",
+    "ActionKeyword": "convert",
+    "Name": "Unit Converter",
+    "Description": "Converts physical units",
+    "Author": "Ryan Palo",
+    "Version": "0.1.1",
+    "Language": "python",
+    "Website": "",
+    "IcoPath": "Images\\app.png",
+    "ExecuteFileName": "main.py"
+}
