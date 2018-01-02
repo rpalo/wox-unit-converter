@@ -6,5 +6,5 @@ if (Test-Path "$target_path") {
     Remove-Item "$target_path" -Recurse
 }
 New-Item "$plugin_dir\\$target_name" -ItemType "directory"
-Copy-Item ./* "$plugin_dir\\$target_name" -Recurse
+Copy-Item src/* "$plugin_dir\\$target_name" -Recurse
 Write-Host "Installed."
