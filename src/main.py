@@ -1,13 +1,11 @@
 """Wox Plugin class for unit conversions"""
-import pkgutil
 from wox import Wox
-if pkgutil.find_loader("pint"): #Check for pint
+try:
     import pint
     ureg = pint.UnitRegistry()
     ureg.default_format = ".5nP"
-    dependecies_exist = True
-else:
-    dependecies_exist = False
+except ImportError:
+    pass
 
 
 class UnitConversion(Wox):
@@ -16,7 +14,7 @@ class UnitConversion(Wox):
     def query(self, query):
         """Returns instructions for the user or the results of the user's search string"""
         result = []
-        if dependecies_exist == False:
+        if not 'ureg' in globals():
             result.append({
                 "Title": "Unit Converter",
                 "SubTitle": "This plugin requieres the python module 'pint'. Run 'pip install pint' to install pint.",
@@ -37,7 +35,7 @@ class UnitConversion(Wox):
         else:
             result.append({
                 "Title": "Unit Converter",
-                "SubTitle": "Please enter a query in the format (number) (sourceUnit) to (targetUnit)",
+                "SubTitle": "Please enter a query in the format '(number) (sourceUnit) to (targetUnit)'",
                 "IcoPath": "Images\\app.png"
             })
         return result
