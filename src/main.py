@@ -5,7 +5,7 @@ try:
     ureg = pint.UnitRegistry()
     ureg.default_format = ".5nP"
 except ImportError:
-    pass
+    ureg = None
 
 
 class UnitConversion(Wox):
@@ -14,7 +14,7 @@ class UnitConversion(Wox):
     def query(self, query):
         """Returns instructions for the user or the results of the user's search string"""
         result = []
-        if not 'ureg' in globals():
+        if not ureg:
             result.append({
                 "Title": "Unit Converter",
                 "SubTitle": "This plugin requieres the python module 'pint'. Run 'pip install pint' to install pint.",
