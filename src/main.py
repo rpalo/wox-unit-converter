@@ -2,7 +2,7 @@
 from wox import Wox
 try:
     import pint
-    ureg = pint.UnitRegistry()
+    ureg = pint.UnitRegistry(autoconvert_offset_to_baseunit = True)
     ureg.default_format = ".5nP"
 except ImportError:
     ureg = None
